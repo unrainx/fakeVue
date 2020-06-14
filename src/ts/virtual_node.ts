@@ -1,9 +1,9 @@
 class VirtualNode {
-    private tag: string
-    private data: object
-    private value: any
-    private type: number
-    private children: Array<VirtualNode>
+    public tag: string
+    public data: object
+    public value: any
+    public type: number
+    public children: Array<VirtualNode>
 
     // element 
     public constructor(tag: string, data: object, value: any, type: number) {
@@ -64,10 +64,42 @@ function virtualNode(node: HTMLElement): any {
 }
 
 
-function parseNode(vnode: VirtualNode): HTMLElement {
-    // todo
+function parseNode(vnode: VirtualNode): any {
+    let nodeType = vnode.type
+    let node: HTMLElement
+
+    // node 类型
+    if (nodeType === 1) {
+
+        node = document.createElement(vnode.tag)
+
+        let data: any = vnode.data
+        Object.keys(data).forEach( key => {
+            let attrName = key
+            let attrValue = data[key]
+            node.setAttribute(attrName, attrValue)
+        })
+
+        let children = vnode.children
+        children.forEach( vn => {
+            node.appendChild(parseNode(vn))
+        })
+        return node
+
+    } else if (nodeType === 3) {
+        return document.createTextNode(vnode.value)
+    }
+    return null
 }
 
-let root = document.querySelector('#root') as HTMLElement
-let vroot = virtualNode(root)
-console.log(vroot)
+
+// export {
+//     virtualNode,
+//     parseNode,
+// }
+
+// export const virtualNode = virtualNode
+
+// export parseNode
+
+export default VirtualNode
