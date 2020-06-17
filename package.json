@@ -1,0 +1,21 @@
+{
+  "name": "fakevue",
+  "version": "1.0.0",
+  "description": "简易 Vue 框架的实现",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

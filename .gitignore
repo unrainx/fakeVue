@@ -1,3 +1,5 @@
 /src/js
 
 /.vscode
+
+/node_modules
